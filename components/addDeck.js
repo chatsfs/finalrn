@@ -1,23 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import PropTypes from 'prop-types'
+import { StyleSheet, Text, View, TouchableOpacity,TextInput, AsyncStorage } from 'react-native';
 
-export default class addDeck extends React.Component {
+class addDeck extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      nombre: '',
+    }
+  }
+  addDeck(){
+    this.props.onTodoClick(this.state.nombre)
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <TextInput
+          onChangeText={(nombre)=>this.setState({nombre})}
+          style={{padding: 4}}
+          placeholder='Ingrese el nombre del deck...'
+        />
+        <TouchableOpacity
+          onPress={this.addDeck.bind(this)}
+          style={{backgroundColor: 'orange', padding: 10}}
+        >
+            <Text style={{color: 'white', textAlign: 'center'}}>Añadir al deck...</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
-
+addDeck.propTypes = {
+  onTodoClick: PropTypes.func.isRequired
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
 });
+export default addDeck
