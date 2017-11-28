@@ -24,7 +24,7 @@ const Tabs = TabNavigator({
       header: null
     },
     tabBarOptions: {
-      activeTintColor: Platform.OS === 'ios' ? '#555' :'#555',
+      activeTintColor: Platform.OS === 'ios' ? 'white' :'white',
       style: {
         height: 56,
         backgroundColor: Platform.OS === 'ios' ? '#555' : '#555',
@@ -43,7 +43,11 @@ export default class tabNavigator extends React.Component {
         header: null
     }
     render() {
-        return <Tabs/>
+        return(
+            <View style={{paddingTop: 24, flex: 1, backgroundColor: '#555'}}>
+                <Tabs/>
+            </View>
+        )
     }
 }
 
