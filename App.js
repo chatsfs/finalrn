@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, } from 'react-native';
 import  addCard from './containers/addCard'
 import  deck from './containers/deck'
+import  cuestionario from './components/cuestionario'
 import { StackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -24,6 +25,15 @@ const MainNavigator = StackNavigator({
   },
   addCard: {
     screen: addCard,
+    navigationOptions: {
+      headerTintColor: '#222',
+      headerStyle: {
+        backgroundColor: '#555',
+      }
+    }
+  },
+  cuestionario: {
+    screen: cuestionario,
     navigationOptions: {
       headerTintColor: '#222',
       headerStyle: {

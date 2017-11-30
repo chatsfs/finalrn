@@ -8,14 +8,18 @@ export default class deck extends React.Component {
       <View style={styles.container}>
         <Text>{deck.title}</Text>
         <Text>{deck.questions.length}</Text>
-        <Button
-          onPress={()=>this.props.navigation.navigate('addCard',{data: this.props.navigation.state.params.data})}
-          title='AGREGAR CARTA'
-        />
-        <Button
-          onPress={()=>this.props.navigation.navigate('addCard',{data: this.props.navigation.state.params.data})}
-          title='SEGUIR CUESTIONARIO'
-        />
+        <View style={{marginVertical: 10}}>
+          <Button
+            onPress={()=>this.props.navigation.navigate('addCard',{data: this.props.navigation.state.params.data})}
+            title='AGREGAR CARTA'
+          />
+        </View>
+        <View style={{marginVertical: 10}}>
+          <Button
+            onPress={()=>this.props.navigation.navigate('cuestionario',{data: this.props.navigation.state.params.data})}
+            title='SEGUIR CUESTIONARIO'
+          />
+        </View>
       </View>
     );
   }
