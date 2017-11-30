@@ -45,7 +45,7 @@ export default class tabNavigator extends React.Component {
     render() {
         return(
             <View style={{paddingTop: 24, flex: 1, backgroundColor: '#555'}}>
-                <Tabs/>
+                <Tabs screenProps={{topNavigation: this.props.navigation}}/>
             </View>
         )
     }

@@ -14,9 +14,13 @@ export function addDeck (deck){
         deck
     }
 }
-export function addCard (card){
+export function addCard (question,answer,key){
     return {
         type: ADD_CARD,
-        card
+        card: {
+            question,
+            answer
+        },
+        key,
     }
 }

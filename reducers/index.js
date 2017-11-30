@@ -23,7 +23,8 @@ const defaultState = {
           }
         ]
       }
-    }
+    },
+    currentDeck: null,
 }
 function decks(state = defaultState, action) {
     switch (action.type) {
@@ -33,17 +34,22 @@ function decks(state = defaultState, action) {
                 ...action.decks
             }
         case ADD_DECK:
+        {
             let mutated = {...state, decks: {...state.decks}};
             mutated.decks[action.deck] = {
                 title: action.deck,
                 questions: [],
             }
             return mutated
-        case ADD_CARD:
-            return{
-                ...state,
-                ...state[action.deck].card
-            }
+        }
+        case ADD_CARD:{
+            let currentDeck = {...state.decks[action.key]};
+            currentDeck.questions.push(action.card);
+            let decks = {...state.decks,};
+            decks[action.key] = currentDeck;
+            let mutated = {...state, decks};
+            return mutated;
+        }
         default:
             return state
     }

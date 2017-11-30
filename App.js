@@ -1,21 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View,StatusBar,Platform } from 'react-native';
-import  addDeck from './components/addDeck'
-import  deck from './components/deck'
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import { TabNavigator, StackNavigator } from 'react-navigation'
+import { StyleSheet, } from 'react-native';
+import  addCard from './containers/addCard'
+import  deck from './containers/deck'
+import { StackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 let store = createStore(reducer)
 import tabNavigator from './components/tabNavigator'
-function StatusBarT ({backgroundColor, ...props}){
-  return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-    </View>
-  )
-}
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -29,7 +21,16 @@ const MainNavigator = StackNavigator({
         backgroundColor: '#555',
       }
     }
-  }
+  },
+  addCard: {
+    screen: addCard,
+    navigationOptions: {
+      headerTintColor: '#222',
+      headerStyle: {
+        backgroundColor: '#555',
+      }
+    }
+  },
 })
 
 export default class App extends React.Component {

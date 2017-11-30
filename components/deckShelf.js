@@ -8,14 +8,15 @@ export default class deckShelf extends React.Component {
                 {Object.keys(this.props.decks).map(key => {
                     const { title } = this.props.decks[key]
                     return (
-                        <View key={key} style={{ width: '50%' }} >
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate(
-                                'deck',
-                                { entryId: key }
-                            )}>
-                                <Text> {title}</Text>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity
+                            key={key}
+                            style={{backgroundColor: 'blue', margin: 10, padding: 10, margin: 10}}
+                            onPress={() => this.props.screenProps.topNavigation.navigate(
+                            'deck',
+                            { data: this.props.decks[key] }
+                        )}>
+                            <Text style={{color: 'white'}}> {title}</Text>
+                        </TouchableOpacity>
                     )
                 })}
             </View>
@@ -27,7 +28,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
         justifyContent: 'center',
     },
 });
