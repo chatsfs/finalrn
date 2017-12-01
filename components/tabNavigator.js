@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
+import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import  deckShelf  from '../containers/deckShelf'
 import  addDeck from '../containers/addDeck'
 const Tabs = TabNavigator({
