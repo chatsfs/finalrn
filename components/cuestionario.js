@@ -44,6 +44,8 @@ export default class card extends React.Component {
         >
           {questions.map(
             (question,index)=><Carta
+              rightanswer={this.state.aciertos}
+              totalq={questions.length}
               key={index}
               accumulate={this.accumulate.bind(this)}
               question={question}
