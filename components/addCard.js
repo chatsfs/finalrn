@@ -8,7 +8,7 @@ export default class addCard extends React.Component {
     }
     save = () => {
         this.props.addCard(this.state.question,this.state.answer,this.props.navigation.state.params.data)
-        this.clearFields();
+        this.props.navigation.goBack();
     }
     clearFields = () => {
         this.setState({

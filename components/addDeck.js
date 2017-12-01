@@ -11,6 +11,10 @@ class addDeck extends React.Component {
   }
   addDeck(){
     this.props.onTodoClick(this.state.nombre)
+    this.props.screenProps.topNavigation.navigate('deck', {data: {
+      title: this.state.nombre,
+      questions: []
+    }});
   }
   render() {
     return (

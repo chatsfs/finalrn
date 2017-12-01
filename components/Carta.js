@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput,Dimensions, Button,Animated } from 'react-native';
 const {width,height} = Dimensions.get('window')
-const realHeight = height-56;
+const realHeight = height-86;
 export default class card extends React.Component {
   constructor(props){
     super(props);
@@ -22,11 +22,14 @@ export default class card extends React.Component {
         let resultado = '';
         if(this.state.answer.length){
           if(this.state.answer!=this.props.question.answer){
+            //this.props.accumulate(0)
             resultado = 'Respuesta incorrecta! :('
           }else{
+            this.props.accumulate(1)
             resultado = 'Respuesta correcta! :)'
           }
         }else{
+          //this.props.accumulate(0)
           resultado = `La respuesta era: ${this.props.question.answer}`
         }
         this.setState({answered: true, resultado})
@@ -37,6 +40,7 @@ export default class card extends React.Component {
     let question = this.props.question;
     let rotationCara = this.state.rotation.interpolate({inputRange: [0,1],outputRange: ['0deg','180deg']});
     let rotationSello = this.state.rotation.interpolate({inputRange: [0,1],outputRange: ['180deg','360deg']});
+    let nextText = this.props.last?'Regresar':'Siguiente'
     return (
       <View style={{height: realHeight, padding: 20,justifyContent: 'flex-end'}}>
         <TextInput
@@ -53,9 +57,14 @@ export default class card extends React.Component {
             <Text>{this.state.resultado}</Text>
           </Animated.View>
         </View>
-        <View style={{paddingTop: 20}}>
+        {this.props.last&&<View style={{paddingTop: 20}}>
           <Button
-            title={!this.state.answered?(this.state.answer.length?'enviar':'pedir respuesta'):'siguiente'}
+            title='Volver a tomar cuestionario'
+            onPress={this.props.rewind}/>
+        </View>}
+        <View style={{paddingTop: 10, paddingBottom: 40}}>
+          <Button
+            title={!this.state.answered?(this.state.answer.length?'Enviar':'Pedir respuesta'):nextText}
             onPress={this.takeAction.bind(this)}/>
         </View>
       </View>
