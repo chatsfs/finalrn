@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView,Dimensions,Text } from 'react-native';
-import { setLocalNotification,clearLocalNotification} from './utils/helpers'
+import { setLocalNotification,clearLocalNotification} from '../utils/helper'
 const {height} = Dimensions.get('window')
 const realHeight = height-56;
 import Carta from './Carta'

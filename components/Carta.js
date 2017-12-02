@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { setLocalNotification,clearLocalNotification} from '../utils/helper'
 import { StyleSheet, Text, View, TextInput, Dimensions, Button, Animated } from 'react-native';
 const { width, height } = Dimensions.get('window')
 const realHeight = height - 86;
@@ -84,7 +85,7 @@ export default class card extends React.Component {
               title={this.state.answer.length ? 'Guess' : 'Escribe algo...'}
               onPress={this.review.bind(this)} />
           <Button
-            title={!this.state.answered ? (this.state.answer.length ? 'Enviar' : 'Pedir respuesta') : nextText}
+            title={!this.state.answered ? (this.state.answer.length ? 'Enviar' : 'Show Answer') : nextText}
             onPress={this.takeAction.bind(this)} />
         </View>
       </View>
