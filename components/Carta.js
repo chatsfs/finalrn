@@ -14,6 +14,9 @@ export default class card extends React.Component {
     }
   }
   takeAction() {
+    if(this.props.last){
+      clearLocalNotification().then(setLocalNotification)
+    }
     if (this.state.answered) {
       this.props.siguiente();
     } else {
