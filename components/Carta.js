@@ -85,7 +85,7 @@ export default class card extends React.Component {
               title={this.state.answer.length ? 'Guess' : 'Escribe algo...'}
               onPress={this.review.bind(this)} />
           <Button
-            title={!this.state.answered ? (this.state.answer.length ? 'Enviar' : 'Show Answer') : nextText}
+            title={!this.state.answered ? (this.state.answer.length ? 'Send' : 'Show Answer') : nextText}
             onPress={this.takeAction.bind(this)} />
         </View>
       </View>
